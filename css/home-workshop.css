@@ -6,7 +6,7 @@
 body.hub {
   background: #efe6d6 !important;
   color: #1c1917 !important;
-  font-family: 'Noto Sans TC', sans-serif !important;
+  font-family: 'Huninn', 'Noto Sans TC', sans-serif !important; /* 內文粉圓 */
   margin: 0;
   padding: 0;
 }
@@ -470,3 +470,6 @@ body.hub .tool-photo { height: 220px; }
 body.hub .tool-text-only.tool-caption { min-height: 220px; box-sizing: border-box; }
 @media (max-width: 900px) { body.hub .hub-tool { grid-column: span 6; } }
 @media (max-width: 640px) { body.hub .hub-tool { grid-column: span 1 !important; } }
+
+/* 首頁標題維持思源黑體 900 */
+body.hub h1, body.hub h2, body.hub h3, body.hub h4, body.hub .hero-title, body.hub .tool-caption strong, body.hub .hero-sticky { font-family: 'Noto Sans TC', sans-serif !important; }

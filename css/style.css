@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Huninn&display=swap");
 /* === 基礎變數 === */
 :root {
   --primary: #FF7A00;
@@ -37,7 +38,8 @@
   --radius-lg: 20px;
   --radius-xl: 28px;
 
-  --font-sans: "Noto Sans TC", -apple-system, "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", sans-serif;
+  --font-sans: "Huninn", "Noto Sans TC", -apple-system, "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", sans-serif; /* 2026-09-07 內文改粉圓（Google Fonts 只有 400，標題另用思源） */
+  --font-head: "Noto Sans TC", -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
   --font-mono: "Inter", -apple-system, sans-serif;
 
   --easing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2123,3 +2125,8 @@ input[type=range]:focus-visible {
   border-radius: 6px;
 }
 input[type=range]:disabled { opacity: .45; cursor: not-allowed; }
+
+/* === 標題維持思源黑體真粗體（粉圓只有 400 字重，避免假粗） === */
+h1, h2, h3, h4, h5, h6, .brand, .brand h1, .section-title, .card h4, .tool-head h3, .cat-head h4 {
+  font-family: var(--font-head);
+}
