@@ -390,7 +390,11 @@ if (typeof Interactions !== 'undefined') {
       if (tqAnswered.has(i)) return;
       tqAnswered.add(i);
       const correct = c === TQ[i].correct;
-      const parent = btn.closest('div[style]');
+      // .tq-feedback 在卡片層，而 closest('div[style]') 會停在選項的 flex 容器，
+      // 於是 fb.innerHTML 每次都丟例外，測驗不計分也不顯示解說。
+      let parent = btn.parentElement;
+      while (parent && !parent.querySelector('.tq-feedback')) parent = parent.parentElement;
+      if (!parent) return;
       parent.querySelectorAll('.tq-btn').forEach((b, k) => {
         b.disabled = true;
         b.style.cursor = 'default';

@@ -199,7 +199,7 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       belt: 'P1–P2（500–720 RPM）', tip: '118° 磨尖螺旋刃',
       desc: '最通用的金屬鑽頭，螺旋排屑槽讓切屑順暢排出。鑽鐵/鋼時建議加切削油冷卻降溫，延長鑽頭壽命。不適合木材（缺少中心定位尖）。',
       note: '鑽鋼必須用切削油，否則鑽頭在數分鐘內即因過熱而退火失硬。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/HSS_Twist_Drill_into_Aluminium_with_Lubricant.jpg/320px-HSS_Twist_Drill_into_Aluminium_with_Lubricant.jpg', caption: 'HSS 鑽頭鑽削鋁材（施切削液）', page: 'https://commons.wikimedia.org/wiki/File:HSS_Twist_Drill_into_Aluminium_with_Lubricant.jpg', license: 'CC BY-SA 3.0 · Wikimedia Commons' },
+      photo: { url: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/HSS_Twist_Drill_into_Aluminium_with_Lubricant.jpg/330px-HSS_Twist_Drill_into_Aluminium_with_Lubricant.jpg', caption: 'HSS 鑽頭鑽削鋁材（施切削液）', page: 'https://commons.wikimedia.org/wiki/File:HSS_Twist_Drill_into_Aluminium_with_Lubricant.jpg', license: 'CC BY-SA 3.0 · Wikimedia Commons' },
       svg: `<rect x="10" y="43" width="140" height="14" rx="2" fill="#9ca3af"/>
         <g stroke="#4b5563" stroke-width="1" opacity=".7">
           <line x1="18" y1="43" x2="23" y2="57"/><line x1="30" y1="43" x2="35" y2="57"/>
@@ -216,7 +216,6 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       belt: 'P4–P5（1700–2400 RPM）', tip: '中心定位尖 + 螺旋刃',
       desc: '前端有銳利的中心定位尖，確保不偏鑽；外緣切刃先劃破木纖維，螺旋槽快速排出木屑。木材鑽孔首選，孔邊緣整潔。',
       note: '木工鑽頭遇金屬會立刻崩刃——材料混用前務必確認鑽頭種類。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Spade_bit.jpg/320px-Spade_bit.jpg', caption: '木工鑽頭（帶中心尖）', page: 'https://commons.wikimedia.org/wiki/File:Spade_bit.jpg', license: 'CC BY-SA · Wikimedia Commons' },
       svg: `<rect x="10" y="44" width="140" height="12" rx="2" fill="#d97706"/>
         <circle cx="155" cy="50" r="3" fill="#fbbf24"/>
         <polygon points="150,44 172,50 150,56" fill="#92400e"/>
@@ -228,7 +227,6 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       belt: 'P1–P2（500–720 RPM）', tip: '壓製碳化鎢箭形頭',
       desc: '尖端為燒結碳化鎢（YG8），硬度極高，在鑽床上配合手動進刀對磚牆緩慢研磨穿孔。鑽床不具衝擊模式，效率不如電鎚鑽，但孔形更精確。',
       note: '鑽床無電鎚衝擊功能，磚石鑽頭鑽硬混凝土時效率有限，建議先用電鎚鑽預鑽再精修。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Hammer_drill_bits.jpg/320px-Hammer_drill_bits.jpg', caption: '磚石碳化鎢鑽頭組', page: 'https://commons.wikimedia.org/wiki/File:Hammer_drill_bits.jpg', license: 'CC BY-SA · Wikimedia Commons' },
       svg: `<rect x="10" y="44" width="140" height="12" rx="2" fill="#78716c"/>
         <polygon points="150,40 170,50 150,60" fill="#44403c"/>
         <polygon points="155,46 168,50 155,54" fill="#a8a29e"/>`,
@@ -239,7 +237,6 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       belt: 'P1–P2（500–720 RPM，必須低速）', tip: '環形切刃 + 中心定位尖',
       desc: '鑽床限定的高精度鑽頭。圓形切刃先劃破木纖維邊緣，底面完全平整——鉸鏈安裝座、榫孔等需要精確盲孔深度的場合不可取代。直徑常見 10–50mm。',
       note: '大直徑（>25mm）必須極低速（P1），否則側刃過熱焦黑；鑽孔中途暫停數次讓鑽頭冷卻。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Forstner_Bits.jpg/320px-Forstner_Bits.jpg', caption: 'Forstner 平底鑽頭組（多尺寸）', page: 'https://commons.wikimedia.org/wiki/File:Forstner_Bits.jpg', license: 'CC BY-SA · Wikimedia Commons' },
       svg: `<rect x="10" y="46" width="120" height="8" rx="2" fill="#8b5cf6"/>
         <rect x="130" y="34" width="28" height="32" rx="2" fill="#7c3aed"/>
         <rect x="133" y="37" width="4" height="26" fill="#a78bfa"/>
@@ -253,7 +250,6 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       belt: 'P2–P3（720–1100 RPM）', tip: '錐形多階梯切刃',
       desc: '錐形鑽頭，每個台階對應一個孔徑（如 4/6/8/10/12mm）。在薄板上一支鑽頭就能完成多種孔徑，不需換鑽頭。鑽床固定進刀深度讓每個尺寸精確可控。',
       note: '階梯鑽只適合薄板（≤5mm），厚板上台階會打滑無法精確定位。進刀到目標台階即停，不要繼續往下。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Step_drill_bit.jpg/320px-Step_drill_bit.jpg', caption: '階梯鑽頭（單支多孔徑）', page: 'https://commons.wikimedia.org/wiki/File:Step_drill_bit.jpg', license: 'CC BY-SA · Wikimedia Commons' },
       svg: `<rect x="10" y="48" width="80" height="4" rx="1" fill="#0ea5e9"/>
         <polygon points="90,42 106,50 90,58" fill="#0369a1"/>
         <polygon points="106,44 118,50 106,56" fill="#0369a1"/>
@@ -268,7 +264,6 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       belt: 'P1（500 RPM，最低速）', tip: '圓筒鋸齒 + 中心導鑽',
       desc: '圓形鋸齒筒切出大孔，中心有導鑽先定位。適合開關盒孔、管道穿牆孔等大直徑場合。鑽床固定了主軸方向，孔形比手持更圓更正。鑽木用雙金屬鋸齒，鑽金屬需加切削油。',
       note: '開孔器重量大、直徑大，鑽床才能安全操作。手電鑽開大孔容易偏轉傷人，建議在鑽床上進行。鑽完後先停機，再用起子撬出圓木塞。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Hole_Saw_bits.jpg/320px-Hole_Saw_bits.jpg', caption: '開孔器（多尺寸）及導鑽', page: 'https://commons.wikimedia.org/wiki/File:Hole_Saw_bits.jpg', license: 'CC BY-SA · Wikimedia Commons' },
       svg: `<line x1="78" y1="50" x2="110" y2="50" stroke="#d97706" stroke-width="2.5" stroke-dasharray="3,2"/>
         <polygon points="110,45 118,50 110,55" fill="#92400e"/>
         <ellipse cx="46" cy="50" rx="36" ry="22" fill="none" stroke="#b45309" stroke-width="6"/>
@@ -351,8 +346,8 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
           <div style="width:180px;flex-shrink:0">
             <svg viewBox="0 0 180 100" style="width:100%;border-radius:8px;background:#1e293b">${b.svg}</svg>
             <div style="margin-top:8px;border-radius:8px;overflow:hidden;background:#f1f5f9">
-              <img src="${b.photo.url}" alt="${b.photo.caption}" style="width:100%;display:block;max-height:120px;object-fit:cover" onerror="this.style.display='none'">
-              <p style="font-size:10px;color:#94a3b8;margin:4px 6px;line-height:1.4">${b.photo.caption}<br><a href="${b.photo.page}" target="_blank" rel="noopener" style="color:#3b82f6">${b.photo.license}</a></p>
+              ${b.photo ? `<img src="${b.photo.url}" alt="${b.photo.caption}" style="width:100%;display:block;max-height:120px;object-fit:cover" onerror="this.style.display='none'">
+              <p style="font-size:10px;color:#94a3b8;margin:4px 6px;line-height:1.4">${b.photo.caption}<br><a href="${b.photo.page}" target="_blank" rel="noopener" style="color:#3b82f6">${b.photo.license}</a></p>` : ''}
             </div>
           </div>
         </div>`;
@@ -378,7 +373,6 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       ],
       bestFor: '教室教學、小工件、木材與薄金屬',
       warn: '高度較低，加工大型工件前先確認工作台能升降到合適高度。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Drill_press_01.jpg/320px-Drill_press_01.jpg', caption: '典型桌上式鑽床', license: 'CC BY-SA · Wikimedia Commons', page: 'https://commons.wikimedia.org/wiki/File:Drill_press_01.jpg' },
     },
     {
       id: 'floorstanding',
@@ -395,7 +389,7 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       ],
       bestFor: '大型工件、職業訓練、工廠批量加工',
       warn: '機台重量達 50–120kg，搬移需要多人協作；緊急停止鈕一定要確認位置。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Drillpress.jpg/240px-Drillpress.jpg', caption: '落地式立式鑽床', license: 'CC BY-SA · Wikimedia Commons', page: 'https://commons.wikimedia.org/wiki/File:Drillpress.jpg' },
+      photo: { url: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Drillpress.jpg/330px-Drillpress.jpg', caption: '落地式立式鑽床', license: 'CC BY-SA · Wikimedia Commons', page: 'https://commons.wikimedia.org/wiki/File:Drillpress.jpg' },
     },
     {
       id: 'horizontal',
@@ -412,7 +406,6 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       ],
       bestFor: '軸材側面孔、圓管穿孔、機械零件加工',
       warn: '工件必須水平夾緊，垂直重力不會幫助定位，固定工件更需謹慎。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Horizontal_boring_machine.jpg/320px-Horizontal_boring_machine.jpg', caption: '臥式鑽孔機（水平主軸）', license: 'CC BY-SA · Wikimedia Commons', page: 'https://commons.wikimedia.org/wiki/File:Horizontal_boring_machine.jpg' },
     },
     {
       id: 'radialarm',
@@ -429,7 +422,6 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       ],
       bestFor: '大型板材多孔加工、工件不易搬移的場合',
       warn: '懸臂旋轉前必須先鎖緊，主軸未到定位就開機是危險操作。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Radial_Drilling_Machine.jpg/320px-Radial_Drilling_Machine.jpg', caption: '工業用搖臂鑽床', license: 'CC BY-SA · Wikimedia Commons', page: 'https://commons.wikimedia.org/wiki/File:Radial_Drilling_Machine.jpg' },
     },
     {
       id: 'mortiser',
@@ -446,7 +438,6 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
       ],
       bestFor: '木工榫眼、抽屜滑軌槽、木框架榫接',
       warn: '方鑿刀具必須成對更換（鑿 + 鑽頭），尺寸不匹配會導致刀具斷裂。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Bench_mortiser.jpg/320px-Bench_mortiser.jpg', caption: '桌上型腳鑿機（方鑿機）', license: 'CC BY-SA · Wikimedia Commons', page: 'https://commons.wikimedia.org/wiki/File:Bench_mortiser.jpg' },
     },
   ];
 
@@ -464,9 +455,9 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
   const cardsHtml = TYPES.map(t => `
     <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;border-top:4px solid ${t.color}">
       <div style="height:140px;overflow:hidden;background:#f1f5f9;display:flex;align-items:center;justify-content:center">
-        <img src="${t.photo.url}" alt="${t.photo.caption}"
+        ${t.photo ? `<img src="${t.photo.url}" alt="${t.photo.caption}"
           style="width:100%;height:140px;object-fit:cover;display:block"
-          onerror="this.parentElement.innerHTML='<span style=font-size:48px>${t.icon}</span>'">
+          onerror="this.parentElement.innerHTML='<span style=font-size:48px>${t.icon}</span>'">` : `<span style="font-size:48px">${t.icon}</span>`}
       </div>
       <div style="padding:14px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
@@ -482,7 +473,7 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
         </div>
         <div style="background:${t.color}12;border-radius:6px;padding:6px 10px;font-size:11px;color:${t.color};font-weight:700;margin-bottom:6px">✓ 最適合：${t.bestFor}</div>
         <div style="background:#fff7ed;border-left:3px solid #f97316;border-radius:4px;padding:5px 8px;font-size:11px;color:#92400e">⚠ ${t.warn}</div>
-        <p style="font-size:10px;color:#94a3b8;margin:6px 0 0;text-align:right"><a href="${t.photo.page}" target="_blank" rel="noopener" style="color:#3b82f6">${t.photo.license}</a></p>
+        ${t.photo ? `<p style="font-size:10px;color:#94a3b8;margin:6px 0 0;text-align:right"><a href="${t.photo.page}" target="_blank" rel="noopener" style="color:#3b82f6">${t.photo.license}</a></p>` : ''}
       </div>
     </div>`).join('');
 
@@ -508,5 +499,8 @@ document.querySelectorAll('.part-chip').forEach(c => c.addEventListener('click',
     </div>
     ${compareHtml}`;
 
+  // nav 宣告在別的 IIFE 內，這裡直接用會 ReferenceError，整段內容就不會被插入
+  const nav = document.querySelector('.module-nav-bottom');
   if (nav) nav.parentNode.insertBefore(sec, nav);
+  else document.querySelector('main')?.appendChild(sec);
 })();

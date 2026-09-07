@@ -136,7 +136,7 @@ document.querySelectorAll('.part-chip').forEach(c => {
   const JOINTS = [
     {
       id: 'good', name: '好焊點（理想）', badge: '✓', color: '#16a34a',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Soldering-PCB-good.jpg/280px-Soldering-PCB-good.jpg', caption: 'PCB 上的標準好焊點：表面光亮、錐形飽滿', page: 'https://commons.wikimedia.org/wiki/File:Soldering-PCB-good.jpg', license: 'CC BY-SA · Wikimedia Commons' },
+      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Soldering-PCB-good.jpg', caption: 'PCB 上的標準好焊點：表面光亮、錐形飽滿', page: 'https://commons.wikimedia.org/wiki/File:Soldering-PCB-good.jpg', license: 'CC BY-SA · Wikimedia Commons' },
       svg: `<rect x="55" y="94" width="190" height="12" fill="#16a34a"/>
         <ellipse cx="150" cy="92" rx="44" ry="14" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>
         <ellipse cx="150" cy="85" rx="32" ry="9" fill="#e5e7eb" stroke="#6b7280" stroke-width="1"/>
@@ -148,7 +148,7 @@ document.querySelectorAll('.part-chip').forEach(c => {
     },
     {
       id: 'cold', name: '冷焊（虛焊）', badge: '△', color: '#d97706',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Cold_solder_joint.jpg/280px-Cold_solder_joint.jpg', caption: '冷焊實物照：表面顆粒粗糙、無金屬光澤', page: 'https://commons.wikimedia.org/wiki/File:Cold_solder_joint.jpg', license: 'CC BY-SA 3.0 · Coronium / Wikimedia Commons' },
+      photo: { url: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Cold_solder_joint.jpg/330px-Cold_solder_joint.jpg', caption: '冷焊實物照：表面顆粒粗糙、無金屬光澤', page: 'https://commons.wikimedia.org/wiki/File:Cold_solder_joint.jpg', license: 'CC BY-SA 3.0 · Coronium / Wikimedia Commons' },
       svg: `<rect x="55" y="94" width="190" height="12" fill="#16a34a"/>
         <ellipse cx="150" cy="92" rx="38" ry="10" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>
         <ellipse cx="150" cy="84" rx="28" ry="8" fill="#888" stroke="#666" stroke-width="1"/>
@@ -163,7 +163,7 @@ document.querySelectorAll('.part-chip').forEach(c => {
     },
     {
       id: 'over', name: '過焊（錫球）', badge: '●', color: '#7c3aed',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Soldering-bad.jpg/280px-Soldering-bad.jpg', caption: '過量焊錫示例：錫料堆積過多、形態不規則', page: 'https://commons.wikimedia.org/wiki/File:Soldering-bad.jpg', license: 'CC BY-SA · Wikimedia Commons' },
+      photo: { url: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Soldering-bad.jpg/330px-Soldering-bad.jpg', caption: '過量焊錫示例：錫料堆積過多、形態不規則', page: 'https://commons.wikimedia.org/wiki/File:Soldering-bad.jpg', license: 'CC BY-SA · Wikimedia Commons' },
       svg: `<rect x="55" y="94" width="190" height="12" fill="#16a34a"/>
         <ellipse cx="150" cy="95" rx="50" ry="14" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>
         <circle cx="150" cy="70" r="28" fill="#d0d0d0" stroke="#606060" stroke-width="1.5"/>
@@ -174,7 +174,7 @@ document.querySelectorAll('.part-chip').forEach(c => {
     },
     {
       id: 'bridge', name: '橋接連錫', badge: '✗', color: '#dc2626',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/L%C3%B6tbr%C3%BCcke.jpg/280px-L%C3%B6tbr%C3%BCcke.jpg', caption: '橋接連錫（Lötbrücke）實物：兩個接腳被錫料短路', page: 'https://commons.wikimedia.org/wiki/File:L%C3%B6tbr%C3%BCcke.jpg', license: 'CC BY-SA · Wikimedia Commons' },
+      photo: { url: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/L%C3%B6tbr%C3%BCcke.jpg/330px-L%C3%B6tbr%C3%BCcke.jpg', caption: '橋接連錫（Lötbrücke）實物：兩個接腳被錫料短路', page: 'https://commons.wikimedia.org/wiki/File:L%C3%B6tbr%C3%BCcke.jpg', license: 'CC BY-SA · Wikimedia Commons' },
       svg: `<rect x="55" y="94" width="190" height="12" fill="#16a34a"/>
         <ellipse cx="110" cy="92" rx="25" ry="11" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>
         <ellipse cx="190" cy="92" rx="25" ry="11" fill="#fbbf24" stroke="#b45309" stroke-width="1.5"/>
@@ -222,11 +222,11 @@ document.querySelectorAll('.part-chip').forEach(c => {
           </div>
         </div>
         <div style="margin-top:14px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;background:#f1f5f9;border-radius:10px;padding:12px">
-          <img src="${j.photo.url}" alt="${j.photo.caption}" style="width:140px;height:auto;border-radius:6px;object-fit:cover;flex-shrink:0" onerror="this.style.display='none'">
+          ${j.photo ? `<img src="${j.photo.url}" alt="${j.photo.caption}" style="width:140px;height:auto;border-radius:6px;object-fit:cover;flex-shrink:0" onerror="this.style.display='none'">` : ''}
           <div style="flex:1;min-width:120px">
             <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#374151">📷 實物對照</p>
-            <p style="margin:0 0 6px;font-size:12px;color:#64748b">${j.photo.caption}</p>
-            <a href="${j.photo.page}" target="_blank" rel="noopener" style="font-size:11px;color:#6366f1">🔗 ${j.photo.license}</a>
+            ${j.photo ? `<p style="margin:0 0 6px;font-size:12px;color:#64748b">${j.photo.caption}</p>
+            <a href="${j.photo.page}" target="_blank" rel="noopener" style="font-size:11px;color:#6366f1">🔗 ${j.photo.license}</a>` : ''}
           </div>
         </div>`;
     });
@@ -242,7 +242,6 @@ document.querySelectorAll('.part-chip').forEach(c => {
       best: '精細通孔元件、IC 腳、小型貼片',
       avoid: '大焊盤、線材接頭（接觸面積太小）',
       note: '最常見的初學者教學用頭。接觸點集中，適合練習定點加熱。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Soldering_iron_tip_types.jpg/320px-Soldering_iron_tip_types.jpg', cap: '各種烙鐵頭形狀對比圖', page: 'https://commons.wikimedia.org/wiki/File:Soldering_iron_tip_types.jpg', lic: 'CC BY-SA · Wikimedia Commons' },
       svg: `<line x1="30" y1="50" x2="130" y2="50" stroke="#9ca3af" stroke-width="12" stroke-linecap="round"/>
         <polygon points="130,42 160,50 130,58" fill="#dc2626"/>
         <circle cx="159" cy="50" r="3" fill="#fbbf24"/>`,
@@ -253,7 +252,6 @@ document.querySelectorAll('.part-chip').forEach(c => {
       best: '通孔焊接、大焊盤、電線接頭、最常用',
       avoid: '密集 SMD 腳（太寬容易橋接）',
       note: '接觸面積大，傳熱效率最高。絕大多數初學者課程首選。新手從這裡開始。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Soldering_iron_tip_types.jpg/320px-Soldering_iron_tip_types.jpg', cap: '扁頭烙鐵頭（最常用）', page: 'https://commons.wikimedia.org/wiki/File:Soldering_iron_tip_types.jpg', lic: 'CC BY-SA · Wikimedia Commons' },
       svg: `<line x1="30" y1="50" x2="140" y2="50" stroke="#9ca3af" stroke-width="12" stroke-linecap="round"/>
         <rect x="140" y="38" width="22" height="24" rx="2" fill="#ea580c"/>`,
     },
@@ -263,7 +261,6 @@ document.querySelectorAll('.part-chip').forEach(c => {
       best: 'SMD 拖焊（Drag Soldering）、IC 陣腳快速焊',
       avoid: '通孔單點精細焊',
       note: '拖焊技術：把大量錫倒在 IC 腳上，再用這個頭一次拖過去帶走多餘錫，速度極快。進階技巧。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Soldering_iron_tip_types.jpg/320px-Soldering_iron_tip_types.jpg', cap: '斜切頭（拖焊專用）', page: 'https://commons.wikimedia.org/wiki/File:Soldering_iron_tip_types.jpg', lic: 'CC BY-SA · Wikimedia Commons' },
       svg: `<line x1="30" y1="50" x2="140" y2="50" stroke="#9ca3af" stroke-width="12" stroke-linecap="round"/>
         <polygon points="140,38 165,50 140,62" fill="#d97706"/>
         <line x1="148" y1="42" x2="165" y2="58" stroke="#92400e" stroke-width="2"/>`,
@@ -274,7 +271,6 @@ document.querySelectorAll('.part-chip').forEach(c => {
       best: '切斷橋接連錫、SMD 大型元件拆焊',
       avoid: '精細通孔、密集排腳',
       note: '用刃部「刮」過連錫就能切斷。也可用來清除舊錫或拆除損壞的連接器。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Soldering_iron_tip_types.jpg/320px-Soldering_iron_tip_types.jpg', cap: '刀型烙鐵頭', page: 'https://commons.wikimedia.org/wiki/File:Soldering_iron_tip_types.jpg', lic: 'CC BY-SA · Wikimedia Commons' },
       svg: `<line x1="30" y1="50" x2="140" y2="50" stroke="#9ca3af" stroke-width="12" stroke-linecap="round"/>
         <polygon points="140,35 170,48 170,52 140,65" fill="#7c3aed"/>
         <line x1="140" y1="35" x2="170" y2="65" stroke="#5b21b6" stroke-width="1.5"/>`,
@@ -285,7 +281,6 @@ document.querySelectorAll('.part-chip').forEach(c => {
       best: '0402 以下 SMD、手機主板維修、精密修補',
       avoid: '一般通孔焊接（太慢）',
       note: '超細尖端導熱緩慢，需要較長接觸時間。不適合新手，用錯容易冷焊或燒壞元件。',
-      photo: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Soldering_iron_tip_types.jpg/320px-Soldering_iron_tip_types.jpg', cap: '微型針頭（精密維修）', page: 'https://commons.wikimedia.org/wiki/File:Soldering_iron_tip_types.jpg', lic: 'CC BY-SA · Wikimedia Commons' },
       svg: `<line x1="30" y1="50" x2="145" y2="50" stroke="#9ca3af" stroke-width="12" stroke-linecap="round"/>
         <polygon points="145,47 175,50 145,53" fill="#0369a1"/>`,
     },
@@ -330,8 +325,8 @@ document.querySelectorAll('.part-chip').forEach(c => {
           </div>
           <div style="width:200px;flex-shrink:0">
             <svg viewBox="0 0 200 100" style="width:100%;background:#1e293b;border-radius:8px">${t.svg}</svg>
-            <img src="${t.photo.url}" alt="${t.photo.cap}" style="width:100%;border-radius:8px;margin-top:8px;max-height:100px;object-fit:cover" onerror="this.style.display='none'">
-            <p style="font-size:10px;color:#94a3b8;margin:4px 0 0"><a href="${t.photo.page}" target="_blank" rel="noopener" style="color:#3b82f6">${t.photo.lic}</a></p>
+            ${t.photo ? `<img src="${t.photo.url}" alt="${t.photo.cap}" style="width:100%;border-radius:8px;margin-top:8px;max-height:100px;object-fit:cover" onerror="this.style.display='none'">
+            <p style="font-size:10px;color:#94a3b8;margin:4px 0 0"><a href="${t.photo.page}" target="_blank" rel="noopener" style="color:#3b82f6">${t.photo.lic}</a></p>` : ''}
           </div>
         </div>`;
     });
@@ -359,26 +354,23 @@ document.querySelectorAll('.part-chip').forEach(c => {
           mp:'183°C', temp:'320°C', skill:'⭐ 新手首選',
           pro:'熔點低、流動性佳、焊點光亮、好學習',
           con:'含鉛（對人體有毒，學後洗手）',
-          note:'國中課堂標準用錫。焊完務必洗手，不要用手摸口鼻。',
-          photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Solder_wire.jpg/320px-Solder_wire.jpg' },
+          note:'國中課堂標準用錫。焊完務必洗手，不要用手摸口鼻。' },
         { name: '無鉛錫（SAC305）', badge:'🟢', color:'#16a34a',
           mp:'217°C', temp:'360–380°C', skill:'⭐⭐ 進階',
           pro:'符合 RoHS 環保法規，無鉛安全',
           con:'熔點高、流動性差、焊點較霧，新手易冷焊',
-          note:'工廠量產標準。需要較高溫度，操作不熟練容易冷焊。',
-          photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Solder_wire.jpg/320px-Solder_wire.jpg' },
+          note:'工廠量產標準。需要較高溫度，操作不熟練容易冷焊。' },
         { name: '錫膏（Solder Paste）', badge:'⬜', color:'#475569',
           mp:'183–217°C', temp:'回流爐 230°C+', skill:'⭐⭐⭐ 專業',
           pro:'SMD 表面貼裝必用，自動印刷機友善',
           con:'需要搭配鋼板印刷 + 回流焊爐或熱風槍',
-          note:'用於 SMD 貼片元件。課堂一般不使用，了解概念即可。',
-          photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Solder_paste_stencil.jpg/320px-Solder_paste_stencil.jpg' },
+          note:'用於 SMD 貼片元件。課堂一般不使用，了解概念即可。' },
       ].map(s => `<div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;border-top:4px solid ${s.color}">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
           <span style="font-size:20px">${s.badge}</span>
           <div><div style="font-weight:700;font-size:14px">${s.name}</div><div style="font-size:11px;color:#94a3b8">${s.skill}</div></div>
         </div>
-        <img src="${s.photo}" style="width:100%;height:60px;object-fit:cover;border-radius:6px;margin-bottom:8px" onerror="this.style.display='none'">
+        ${s.photo ? `<img src="${s.photo}" style="width:100%;height:60px;object-fit:cover;border-radius:6px;margin-bottom:8px" onerror="this.style.display='none'">` : ''}
         <div style="display:flex;gap:6px;margin-bottom:8px;font-size:11px">
           <span style="background:#0f172a;color:#fff;padding:2px 8px;border-radius:4px;font-family:Inter">熔點 ${s.mp}</span>
           <span style="background:${s.color};color:#fff;padding:2px 8px;border-radius:4px;font-family:Inter">操作 ${s.temp}</span>
@@ -419,17 +411,16 @@ document.querySelectorAll('.part-chip').forEach(c => {
         { name:'吸錫器（Desoldering Pump）', badge:'🔫', color:'#dc2626',
           how:'按下彈簧 → 烙鐵加熱錫到熔融 → 對準瞬間按下吸嘴 → 錫被吸入',
           best:'通孔大量吸錫，速度快', warn:'需要雙手協調，一手烙鐵一手吸',
-          photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Desoldering_pump.jpg/320px-Desoldering_pump.jpg' },
+          photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Desoldering_pump.jpg/330px-Desoldering_pump.jpg' },
         { name:'吸錫線（銅辮子 Desoldering Braid）', badge:'🧵', color:'#7c3aed',
           how:'把銅辮子壓在焊點上 → 烙鐵加熱辮子 → 毛細管效應把錫吸進辮子',
-          best:'SMD 連錫、細密間距清理，不需吸力', warn:'單次使用段要剪掉，費料較多',
-          photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Desoldering_braid.jpg/320px-Desoldering_braid.jpg' },
+          best:'SMD 連錫、細密間距清理，不需吸力', warn:'單次使用段要剪掉，費料較多' },
       ].map(d => `<div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:12px;border-top:4px solid ${d.color}">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
           <span style="font-size:22px">${d.badge}</span>
           <div style="font-weight:700;font-size:13px">${d.name}</div>
         </div>
-        <img src="${d.photo}" style="width:100%;height:70px;object-fit:cover;border-radius:6px;margin-bottom:8px" onerror="this.style.display='none'">
+        ${d.photo ? `<img src="${d.photo}" style="width:100%;height:70px;object-fit:cover;border-radius:6px;margin-bottom:8px" onerror="this.style.display='none'">` : ''}
         <div style="font-size:12px;color:#374151;margin-bottom:6px"><strong>使用方式：</strong>${d.how}</div>
         <div style="font-size:11px;color:#16a34a;margin-bottom:3px">✓ ${d.best}</div>
         <div style="font-size:11px;color:#dc2626">⚠ ${d.warn}</div>

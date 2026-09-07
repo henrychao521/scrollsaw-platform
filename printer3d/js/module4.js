@@ -10,7 +10,9 @@ let printState = { running: false, progress: 0, startTime: 0 };
 const MODELS = {
   cube: { name: '立方體', width: 30, height: 30, layers: 150, volumeFactor: 1, color: '#06B6D4', shape: 'rect' },
   cylinder: { name: '圓柱', width: 30, height: 40, layers: 200, volumeFactor: 0.785, color: '#10B981', shape: 'circle' },
-  benchy: { name: '3D Benchy', width: 60, height: 48, layers: 240, volumeFactor: 0.65, color: '#8B5CF6', shape: 'boat' },
+  // Benchy 是 60×31×48 mm 的船，不是方底；用 width² 會把體積灌大約 5 倍
+  // （原本顯示 61 g，實際 0.2mm/20% 約 11-13 g）。depth 與實心佔比改用實測值。
+  benchy: { name: '3D Benchy', width: 60, depth: 31, height: 48, layers: 240, volumeFactor: 0.174, color: '#8B5CF6', shape: 'boat' },
   vase: { name: '花瓶', width: 40, height: 80, layers: 400, volumeFactor: 0.5, color: '#EC4899', shape: 'vase' },
 };
 
@@ -19,7 +21,7 @@ function recalcEstimates() {
   // 計算層數 (height in mm / layer thickness)
   const layers = Math.round(m.height / params.layer);
   // 總體積 (cm³) = w*h*model factor / 1000
-  const totalVolume = m.width * m.width * m.height * m.volumeFactor / 1000;
+  const totalVolume = m.width * (m.depth || m.width) * m.height * m.volumeFactor / 1000;
   // 有效體積：殼約 30% 不受填充影響 + 內部 70% 依填充率
   // (infill=100% → 100%, infill=20% → 44%, infill=0% → 30%)
   const effVolume = totalVolume * (0.3 + 0.7 * params.infill / 100);

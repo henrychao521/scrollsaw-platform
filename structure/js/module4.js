@@ -179,7 +179,8 @@ function solveScenario() {
   // 儲存最高星級
   if (!starsMap[sc.id] || stars > starsMap[sc.id]) {
     starsMap[sc.id] = stars;
-    const p = loadP(); p.module4_stars = starsMap; saveP(p);
+    // 教師後台與首頁讀的是 module4_levels，存成 module4_stars 會讓星數完全不顯示
+    const p = loadP(); p.module4_levels = starsMap; p.module4_stars = starsMap; saveP(p);
     updateTotalStars();
     // 更新卡片
     const cards = document.querySelectorAll('.scenario-card');

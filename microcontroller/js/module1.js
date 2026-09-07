@@ -87,7 +87,9 @@ if (sQuizEl) {
     if (ok) { sCorrect++; if (typeof SoundFX !== 'undefined') SoundFX.success(); } else if (typeof SoundFX !== 'undefined') SoundFX.error();
     sAnswered.add(i);
     if (sAnswered.size === SAFETY_QUIZ.length) {
-      const pp = loadP(); pp.module1_safety = true; pp.module1_safety_score = sCorrect; saveP(pp);
+      // 安全測驗要真的答對才算通過，否則 0 分也會被記成 safety passed
+      const pass = sCorrect === SAFETY_QUIZ.length;
+      const pp = loadP(); pp.module1_safety = pass; pp.module1_safety_score = sCorrect; saveP(pp);
       if (typeof SoundFX !== 'undefined') SoundFX.win();
       showToast(`🧯 用電安全測驗 ${sCorrect}/${SAFETY_QUIZ.length} 答對`, sCorrect === SAFETY_QUIZ.length ? 'good' : 'info');
     }

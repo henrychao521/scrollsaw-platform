@@ -291,7 +291,8 @@ function guidedSolve() {
   document.getElementById('g-collapse-btn').style.pointerEvents = 'auto';
 
   // 儲存進度
-  const pp = loadP(); pp.module3_guided = true; saveP(pp);
+  // 教師後台與首頁都以 module3 判定完成，只寫 module3_guided 會讓學生卡在 4/5
+  const pp = loadP(); pp.module3_guided = true; pp.module3 = true; saveP(pp);
   if (typeof SoundFX !== 'undefined') SoundFX.unlock();
 }
 

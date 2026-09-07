@@ -302,11 +302,24 @@ ERRORS.forEach(e => {
   grid.appendChild(card);
 });
 
-// 標記模組 5 完成
+// 標記模組 5 完成 —— 要學生真的看過作品卡，不是開頁就算過
 const PROGRESS_KEY_BB = 'breadboard_progress_v1';
-let p; try { p = JSON.parse(localStorage.getItem(PROGRESS_KEY_BB)) || {}; } catch { p = {}; }
-p.module5 = true;
-localStorage.setItem(PROGRESS_KEY_BB, JSON.stringify(p));
+function markBBDone() {
+  let p; try { p = JSON.parse(localStorage.getItem(PROGRESS_KEY_BB)) || {}; } catch (e) { p = {}; }
+  if (p.module5) return;
+  p.module5 = true;
+  localStorage.setItem(PROGRESS_KEY_BB, JSON.stringify(p));
+}
+// 捲到作品區底部，或點過任一張卡片，才記錄完成
+grid.addEventListener('click', markBBDone);
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => {
+    if (es.some(e => e.isIntersecting)) { markBBDone(); io.disconnect(); }
+  }, { threshold: 0.6 });
+  io.observe(grid.lastElementChild || grid);
+} else {
+  markBBDone();
+}
 
 // ============================================================
 // 互動：電阻色環計算器

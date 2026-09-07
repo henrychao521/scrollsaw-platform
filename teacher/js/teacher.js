@@ -24,6 +24,10 @@ const TOOLS = [
   { id: 'design-process', name: '產品設計流程', emoji: '🎯', key: 'dp_progress_v1', color: '#059669', url: '../design-process/' },
   { id: 'frc', name: 'FRC 機器人', emoji: '🤖', key: 'frc_progress_v1', color: '#0066B3', url: '../frc/', moduleCount: 6 },
   { id: 'onshape', name: 'Onshape 3D 建模', emoji: '📐', key: 'onshape_progress_v1', color: '#0091BD', url: '../onshape/', moduleCount: 10 },
+  { id: 'emerging-tech', name: '新興科技', emoji: '🚀', key: 'et_progress_v1', color: '#7C3AED', url: '../emerging-tech/' },
+  { id: 'mechatronics', name: '機電整合', emoji: '🔧', key: 'mecha_progress_v1', color: '#0F766E', url: '../mechatronics/' },
+  { id: 'steam', name: 'STEAM 專題', emoji: '🎨', key: 'steam_progress_v1', color: '#DB2777', url: '../steam/' },
+  { id: 'lasercut', name: '雷射切割', emoji: '🔺', key: 'laser_progress_v1', color: '#EA580C', url: '../lasercut/' },
 ];
 
 // === 分頁切換 ===
@@ -35,18 +39,30 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+// 學生名稱來自學生上傳的 JSON 與檔名，兩者都由學生控制，
+// 進 innerHTML 之前必須跳脫，否則檔名叫 <img src=x onerror=...>.json 就能在老師的頁面執行程式。
+function esc(v) {
+  return String(v == null ? '' : v).replace(/[&<>"']/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
 // === 進度計算核心（各工具模組數可變：onshape 10、frc 6、其餘 5） ===
 // 各工具欄位略有差異：M2 可能寫 module2 / safetyPassed / module2_score，
 // M4 可能寫 module4 旗標或 module4_levels 星數
 function computeProgress(p, moduleCount = 5) {
   const lv = p.module4_levels;
-  const stars = lv ? Object.values(lv).reduce((a, b) => a + (b || 0), 0) : 0;
+  // 匯入的資料是學生自己的檔案，值可能被改成 'yes'、1、'false' 或星數 99；
+  // 完成一律當布林看，星數夾在 0–3。
+  const stars = lv
+    ? Object.values(lv).reduce((a, b) => a + Math.max(0, Math.min(3, Number(b) || 0)), 0)
+    : 0;
   let completed = 0;
   for (let n = 1; n <= moduleCount; n++) {
     let done;
-    if (n === 2) done = !!(p.module2 || p.safetyPassed || p.module2_score);
-    else if (n === 4) done = lv ? stars > 0 : !!p.module4;
-    else done = !!p['module' + n];
+    const flag = v => v === true || v === 'true' || v === 1;
+    if (n === 2) done = flag(p.module2) || flag(p.safetyPassed) || Number(p.module2_score) > 0;
+    else if (n === 4) done = lv ? stars > 0 : flag(p.module4);
+    else done = flag(p['module' + n]);
     if (done) completed++;
   }
   return { completed, total: moduleCount, percent: Math.round(completed / moduleCount * 100), stars };
@@ -228,7 +244,7 @@ function renderClassResult() {
   TOOLS.forEach(t => html += `<th style="color:${t.color}">${t.emoji} ${t.name}</th>`);
   html += `<th>總計</th></tr></thead><tbody>`;
   classData.forEach(d => {
-    html += `<tr><td><strong>${d.studentName}</strong></td>`;
+    html += `<tr><td><strong>${esc(d.studentName)}</strong></td>`;
     let totalComplete = 0, totalStars = 0;
     TOOLS.forEach(t => {
       const raw = d.tools && d.tools[t.id];
@@ -238,7 +254,10 @@ function renderClassResult() {
         const p = computeFromRaw(raw, t.moduleCount || 5);
         totalComplete += p.completed;
         totalStars += p.stars;
-        html += `<td><span class="progress-cell"><span class="progress-cell-fill" style="width:${p.percent}%"></span></span>${p.completed}/${p.total} ★${p.stars}</td>`;
+        // 知識類模組 2 只要答完就記完成，分數才看得出是真的會還是猜的
+        const q2 = Number(raw.module2_score);
+        const q2txt = Number.isFinite(q2) && q2 > 0 ? ` <span style="color:var(--text-muted);font-size:11px">M2:${q2}</span>` : '';
+        html += `<td><span class="progress-cell"><span class="progress-cell-fill" style="width:${p.percent}%"></span></span>${p.completed}/${p.total} ★${p.stars}${q2txt}</td>`;
       }
     });
     const grandTotal = TOOLS.reduce((s, t) => s + (t.moduleCount || 5), 0);
@@ -270,7 +289,14 @@ window.exportClassCSV = function() {
     });
     rows.push(row);
   });
-  const csv = rows.map(r => r.map(c => `"${c}"`).join(',')).join('\n');
+  // CSV：內層雙引號要成雙，且 = + - @ 開頭的儲存格在 Excel 會被當公式執行，
+  // 學生名稱是自己取的，先加單引號中和。
+  const cell = v => {
+    let t = String(v == null ? '' : v);
+    if (/^[=+\-@]/.test(t)) t = "'" + t;
+    return '"' + t.replace(/"/g, '""') + '"';
+  };
+  const csv = rows.map(r => r.map(cell).join(',')).join('\n');
   // 加 BOM 讓 Excel 正確顯示中文
   const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);

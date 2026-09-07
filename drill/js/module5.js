@@ -145,7 +145,11 @@ quizEl.querySelectorAll('.choice').forEach(btn => btn.addEventListener('click', 
   const c = parseInt(btn.dataset.c);
   if (answered.has(i)) return;
   const correct = c === QUIZ_CASES[i].correct;
-  const parent = btn.closest('.scenario, div');
+  // .feedback-slot 與 .choice-grid 是兄弟，closest('div') 會停在 .choice-grid，
+  // 取到 null 後整個 handler 在計分與寫進度之前就中斷。往上找到真正含它的容器。
+  let parent = btn.parentElement;
+  while (parent && !parent.querySelector('.feedback-slot')) parent = parent.parentElement;
+  if (!parent) return;
   parent.querySelectorAll('.choice').forEach((b, k) => {
     b.disabled = true;
     if (k === QUIZ_CASES[i].correct) b.classList.add('correct');

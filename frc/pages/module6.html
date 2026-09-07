@@ -260,7 +260,31 @@ drive.<span class="fn">setDefaultCommand</span>(drive.<span class="fn">driveComm
     d += ` L 580 180 L 50 180 Z`;
     curveEl.setAttribute('d', d);
   }
-  Object.values(sliders).forEach(s => s.addEventListener('input', simulate));
+  // 進度：教師後台把 FRC 算成 6 個模組，但本頁從未寫過 module6，
+  // 所以每個學生都卡在 5/6。學生實際調整過 PID 參數（四支滑桿至少動過三支）才算完成。
+  const touched = new Set();
+  function markDone() {
+    const PK = 'frc_progress_v1';
+    let p; try { p = JSON.parse(localStorage.getItem(PK)) || {}; } catch (e) { p = {}; }
+    if (p.module6) return;
+    p.module6 = true;
+    p.module6_tuned = [...touched].join(',');
+    localStorage.setItem(PK, JSON.stringify(p));
+    const nav = document.querySelector('.module-nav-bottom');
+    if (nav && !document.getElementById('m6-done')) {
+      const tip = document.createElement('p');
+      tip.id = 'm6-done';
+      tip.className = 'feedback success';
+      tip.style.cssText = 'margin:14px 0 0';
+      tip.textContent = '✓ 已完成 PID 調參練習，進度已記錄。';
+      nav.parentNode.insertBefore(tip, nav);
+    }
+  }
+  Object.entries(sliders).forEach(([k, s]) => s.addEventListener('input', () => {
+    simulate();
+    touched.add(k);
+    if (touched.size >= 3) markDone();
+  }));
   simulate();
 })();
 </script>

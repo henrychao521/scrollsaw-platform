@@ -532,7 +532,10 @@ if (typeof SequencePuzzle === 'function') {
       </div>
     </div>`;
 
+  // nav 宣告在別的 IIFE 內，這裡直接用會 ReferenceError，整段內容就不會被插入
+  const nav = document.querySelector('.module-nav-bottom');
   if (nav) nav.parentNode.insertBefore(sec, nav);
+  else document.querySelector('main')?.appendChild(sec);
 
   function buildSVG(selDepth) {
     const svg = document.getElementById('ds-svg');

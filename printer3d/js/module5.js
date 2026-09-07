@@ -319,10 +319,23 @@ ERRORS.forEach(e => {
   grid.appendChild(card);
 });
 
+// 完成條件：學生真的看過作品卡（捲到底或點過），不是開頁就算過
 const PK = 'printer3d_progress_v1';
-let p; try { p = JSON.parse(localStorage.getItem(PK)) || {}; } catch { p = {}; }
-p.module5 = true;
-localStorage.setItem(PK, JSON.stringify(p));
+function markP3Done() {
+  let p; try { p = JSON.parse(localStorage.getItem(PK)) || {}; } catch (e) { p = {}; }
+  if (p.module5) return;
+  p.module5 = true;
+  localStorage.setItem(PK, JSON.stringify(p));
+}
+grid.addEventListener('click', markP3Done);
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => {
+    if (es.some(e => e.isIntersecting)) { markP3Done(); io.disconnect(); }
+  }, { threshold: 0.6 });
+  io.observe(grid.lastElementChild || grid);
+} else {
+  markP3Done();
+}
 
 // ============================================================
 // 互動：校正立方體診斷（5 個案例）
